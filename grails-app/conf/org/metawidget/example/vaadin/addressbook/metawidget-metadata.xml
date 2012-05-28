@@ -1,26 +1,50 @@
 <?xml version="1.0"?>
 <inspection-result xmlns="http://metawidget.org/inspection-result"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://metawidget.org/inspection-result http://metawidget.org/xsd/inspection-result-1.0.xsd" version="1.0">
+	xsi:schemaLocation="http://metawidget.org/inspection-result http://metawidget.org/xsd/inspection-result-1.0.xsd"
+	version="1.0">
 
-	<!-- Example of using XML. We could have used @UiLookup instead -->
+	<entity type="org.metawidget.example.shared.addressbook.model.Address">
+		<property name="owner" type="org.metawidget.example.shared.addressbook.model.Contact" hidden="true" />
+		<property name="street" comes-after="owner" />
+		<property name="city" comes-after="street" />
+		<property name="state" lookup="Anytown, Cyberton, Lostville, Whereverton" comes-after="city" />
+		<property name="postcode" comes-after="state" />
+	</entity>	
 	
 	<entity type="org.metawidget.example.shared.addressbook.model.Contact">
-		<property name="title" lookup="Mr, Mrs, Miss, Dr, Cpt" required="true"/>
-		<!-- property name="id" hidden="true"/>
-		<property name="firstname" required="true"/>
-		<property name="surname" required="true" maximum-length="50"/>
-		<property name="fullname" hidden="true"/ -->
+		<property name="id" hidden="true" />
+		<property name="title" lookup="Mr, Mrs, Miss, Dr, Cpt" required="true" />
+		<property name="firstname" required="true" comes-after="title" />
+		<property name="surname" required="true" maximum-length="50" comes-after="firstname" />
+		<property name="fullname" hidden="true" />
+		<property name="gender" comes-after="dateOfBirth, surname, company" />
+		<property name="address" type="org.metawidget.example.shared.addressbook.model.Address"
+			section="Contact Details" comes-after="gender" />
+		<property name="communications" type="java.util.Set" 
+			parameterized-type="org.metawidget.example.shared.addressbook.model.Communication" comes-after="address" />	
+		<property name="notes" section="Other" large="true" comes-after="communications"/>	
 	</entity>
 
 	<entity type="org.metawidget.example.shared.addressbook.model.PersonalContact"
-			extends="org.metawidget.example.shared.addressbook.model.Contact"/>
+		extends="org.metawidget.example.shared.addressbook.model.Contact" >
+		<property name="dateOfBirth" comes-after="surname" />
+	</entity>
 
-	<entity type="org.metawidget.example.shared.addressbook.model.BusinessContact"
-			extends="org.metawidget.example.shared.addressbook.model.Contact"/>
-	
+	<entity type="org.metawidget.example.shared.addressbook.model.BusinessContact" 
+		extends="org.metawidget.example.shared.addressbook.model.Contact">
+		<property name="company" comes-after="surname" />
+		<property name="numberOfStaff" section="Other" comes-after="communications" minimum-value="0" maximum-value="100" />
+	</entity>
+
 	<entity type="org.metawidget.example.shared.addressbook.model.Communication">
-		<property name="type" lookup="Telephone, Mobile, Fax, E-mail" type="java.lang.String"/>
+	  <property name="id" hidden="true" />
+		<property name="type" lookup="Telephone, Mobile, Fax, E-mail" type="java.lang.String" />
+	</entity>
+	
+	<entity type="org.metawidget.example.shared.addressbook.model.ContactSearch">
+		<property name="surname" comes-after="firstname" />
+		<property name="type" comes-after="surname" />
 	</entity>	
 
 </inspection-result>

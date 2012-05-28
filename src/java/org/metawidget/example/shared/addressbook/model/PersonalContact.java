@@ -22,6 +22,7 @@ import org.metawidget.inspector.annotation.UiComesAfter;
 
 /**
  * @author Richard Kennard
+ * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
  */
 
 public class PersonalContact
@@ -58,7 +59,6 @@ public class PersonalContact
 	// Public methods
 	//
 
-	@UiComesAfter( "surname" )
 	public Date getDateOfBirth() {
 
 		return mDateOfBirth;

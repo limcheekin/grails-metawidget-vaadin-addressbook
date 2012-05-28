@@ -22,6 +22,7 @@ import org.metawidget.inspector.annotation.UiComesAfter;
 
 /**
  * @author Richard Kennard
+ * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
  */
 
 public class ContactSearch
@@ -51,7 +52,6 @@ public class ContactSearch
 		mFirstname = firstname;
 	}
 
-	@UiComesAfter( "firstname" )
 	public String getSurname() {
 
 		return mSurname;
@@ -62,7 +62,6 @@ public class ContactSearch
 		mSurname = surname;
 	}
 
-	@UiComesAfter( "surname" )
 	public ContactType getType() {
 
 		return mType;

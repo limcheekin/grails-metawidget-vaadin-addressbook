@@ -44,6 +44,7 @@ import org.metawidget.util.simple.ObjectUtils;
  * Serializable.
  *
  * @author Richard Kennard
+ * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
  */
 
 public abstract class Contact
@@ -124,7 +125,6 @@ public abstract class Contact
 	 * like <code>javax.persistence.Id</code> here in preference to <code>UiHidden</code>.
 	 */
 
-	@UiHidden
 	public long getId() {
 
 		return mId;
@@ -144,7 +144,6 @@ public abstract class Contact
 	 * <code>org.hibernate.validator.NotNull</code> here in preference to <code>UiRequired</code>.
 	 */
 
-	@UiRequired
 	public String getTitle() {
 
 		return mTitle;
@@ -164,8 +163,6 @@ public abstract class Contact
 	 * <code>org.hibernate.validator.NotNull</code> here in preference to <code>UiRequired</code>.
 	 */
 
-	@UiComesAfter( "title" )
-	@UiRequired
 	public String getFirstname() {
 
 		return mFirstname;
@@ -190,9 +187,6 @@ public abstract class Contact
 	 * <code>UiAttribute</code>.
 	 */
 
-	@UiComesAfter( "firstname" )
-	@UiRequired
-	@UiAttribute( name = MAXIMUM_LENGTH, value = "50" )
 	public String getSurname() {
 
 		return mSurname;
@@ -203,7 +197,6 @@ public abstract class Contact
 		mSurname = surname;
 	}
 
-	@UiHidden
 	public String getFullname() {
 
 		StringBuilder builder = new StringBuilder();
@@ -231,7 +224,6 @@ public abstract class Contact
 		return builder.toString();
 	}
 
-	@UiComesAfter( { "dateOfBirth", "surname", "company" } )
 	public Gender getGender() {
 
 		return mGender;
@@ -242,8 +234,6 @@ public abstract class Contact
 		mGender = gender;
 	}
 
-	@UiComesAfter( "gender" )
-	@UiSection( "Contact Details" )
 	public Address getAddress() {
 
 		return mAddress;
@@ -254,7 +244,6 @@ public abstract class Contact
 		mAddress = address;
 	}
 
-	@UiComesAfter( "address" )
 	public Set<Communication> getCommunications() {
 
 		return mCommunications;
@@ -316,9 +305,6 @@ public abstract class Contact
 	 * Gets the notes.
 	 */
 
-	@UiComesAfter
-	@UiSection( "Other" )
-	@UiLarge
 	public String getNotes() {
 
 		return mNotes;

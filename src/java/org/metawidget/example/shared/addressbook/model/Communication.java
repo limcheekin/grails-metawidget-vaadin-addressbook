@@ -27,6 +27,7 @@ import org.metawidget.util.simple.ObjectUtils;
  * Implements Serializable because Web containers require session-level values to be Serializable.
  *
  * @author Richard Kennard
+ * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
  */
 
 public class Communication
@@ -75,8 +76,6 @@ public class Communication
 	 * <em>existing</em> annotations as much as possible. Real apps would generally use something
 	 * like <code>javax.persistence.Id</code> here in preference to <code>UiHidden</code>.
 	 */
-
-	@UiHidden
 	public long getId() {
 
 		return mId;

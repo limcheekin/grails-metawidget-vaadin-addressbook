@@ -25,6 +25,7 @@ import org.metawidget.inspector.annotation.UiSection;
 
 /**
  * @author Richard Kennard
+ * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
  */
 
 public class BusinessContact
@@ -64,7 +65,6 @@ public class BusinessContact
 	// Public methods
 	//
 
-	@UiComesAfter( "surname" )
 	public String getCompany() {
 
 		return mCompany;
@@ -84,9 +84,6 @@ public class BusinessContact
 	 * preference to <code>UiAttribute</code>.
 	 */
 
-	@UiComesAfter( "communications" )
-	@UiSection( "Other" )
-	@UiAttributes( { @UiAttribute( name = MINIMUM_VALUE, value = "0" ), @UiAttribute( name = MAXIMUM_VALUE, value = "100" ) } )
 	public int getNumberOfStaff() {
 
 		return mNumberOfStaff;

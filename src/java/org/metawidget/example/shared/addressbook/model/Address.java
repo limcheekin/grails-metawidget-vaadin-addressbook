@@ -28,6 +28,7 @@ import org.metawidget.inspector.annotation.UiLookup;
  * Implements Serializable because Web containers require session-level values to be Serializable.
  *
  * @author Richard Kennard
+ * @author <a href='mailto:limcheekin@vobject.com'>Lim Chee Kin</a>
  */
 
 public class Address
@@ -51,7 +52,6 @@ public class Address
 	// Public methods
 	//
 
-	@UiHidden
 	public Contact getOwner() {
 
 		return mOwner;
@@ -62,7 +62,6 @@ public class Address
 		mOwner = owner;
 	}
 
-	@UiComesAfter( "owner" )
 	public String getStreet() {
 
 		return mStreet;
@@ -73,7 +72,6 @@ public class Address
 		mStreet = street;
 	}
 
-	@UiComesAfter( "street" )
 	public String getCity() {
 
 		return mCity;
@@ -84,8 +82,6 @@ public class Address
 		mCity = city;
 	}
 
-	@UiComesAfter( "city" )
-	@UiLookup( { "Anytown", "Cyberton", "Lostville", "Whereverton" } )
 	public String getState() {
 
 		return mState;
@@ -96,7 +92,7 @@ public class Address
 		mState = state;
 	}
 
-	@UiComesAfter( "state" )
+
 	public String getPostcode() {
 
 		return mPostcode;
